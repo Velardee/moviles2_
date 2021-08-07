@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 4
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+ <section class="tarjeta">
+    <p class="p-numero">{{separarNumero()}}</p>
+    <p class="p-expira">VALID {{mes}}/{{anio}}</p>
+    <p class="p-codigo">{{codigo}}</p>
+    <p class="p-nombre">{{nombre}}</p>
+ </section>
+
+ <ion-item>
+  <ion-label position="stacked">Nombre del titular</ion-label>
+  <ion-input type="text" maxlength="25" [(ngModel)]="nombre"></ion-input>
+</ion-item>
+
+ <ion-item>
+   <ion-label position="stacked">Numero de tarjeta</ion-label>
+   <ion-input type="number" [maxlength]="16" [(ngModel)]="cardNumber"></ion-input>
+ </ion-item>
+
+ <ion-item>
+  <ion-label position="stacked">Mes</ion-label>
+  <ion-input type="text" [maxlength]="2" [(ngModel)]="mes"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="stacked">Año</ion-label>
+  <ion-input type="number" [maxlength]="4" [(ngModel)]="anio"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="stacked">Codigo de seguridad</ion-label>
+  <ion-input type="number" [(ngModel)]="codigo"></ion-input>
+</ion-item>
+
+<ion-button (click)="pagarConStripe()" expand="block"  shape="round" [disabled]="deshabilitarBoton">
+  Pagar
+</ion-button>
+
+</ion-content>

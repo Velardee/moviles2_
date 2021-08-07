@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "334313522842",
+    "project_id": "moviles2-905c8",
+    "storage_bucket": "moviles2-905c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334313522842:android:8b9e99bc2a3bf1ea890123",
+        "android_client_info": {
+          "package_name": "io.Velarde.moviles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334313522842-913mit9252nj4k367lttlvefrhipijo0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1HB5QvQMwSP-fhrP-fFKBeqsc6G7xMf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334313522842-913mit9252nj4k367lttlvefrhipijo0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

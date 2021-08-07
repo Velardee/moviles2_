@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref='/' text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col align-self-center size-md="12" size-lg="12" size-xs="12">
+        <form #formulario="ngForm">
+          <div class="title">
+            <h1 class="ion-text-center">Registro</h1>
+          </div>
+          <ion-list no-lines mode="ios">
+            <ion-item color="purplework" class="input">
+              <ion-label position="floating">
+                <ion-icon slot="start" name="person-outline"></ion-icon>
+                Nombre de Usuario
+              </ion-label>
+              <ion-input type="text" name="name" [(ngModel)]="name" required="required"></ion-input>
+            </ion-item>
+      
+            <ion-item color="purplework" class="input">
+              <ion-label position="floating">
+                <ion-icon slot="start" name="mail-outline"></ion-icon>
+                Correo electronico
+              </ion-label>
+              <ion-input 
+              type="email" 
+              name="email" 
+              [(ngModel)]="email"
+               required="required"
+               pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+               ></ion-input>
+            </ion-item>
+      
+            <ion-item color="purplework" class="input">
+              <ion-label position="floating">
+                <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+                Contraseña
+              </ion-label>
+              <ion-input type="password" name="password" [(ngModel)]="password" required="required" minlength="5"></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-button 
+            expand="block"
+            class="button"
+            
+            color="danger"
+            type="submit"
+            [disabled]="formulario.invalid"
+            (click)="onSubmitRegister()"
+            >
+            Registrarse
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+ 
+
+</ion-content>

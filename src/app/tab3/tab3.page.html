@@ -1,17 +1,49 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/carrito']">
+        <ion-icon slot="end" name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <form [formGroup]="createProductForm" (submit)="crearProducto()">
+    <ion-item>
+      <ion-label stacked>Titulo</ion-label>
+      <ion-input formControlName="titulo" type="text" placeholder="Inserta el nombre del producto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Descripcion</ion-label>
+      <ion-textarea formControlName="descripcion" type="text" placeholder="Descripcion del producto"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Precio</ion-label>
+      <ion-input formControlName="precio" type="number" placeholder="$"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Descuento</ion-label>
+      <ion-input formControlName="descuento" type="number" placeholder="$"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Imagen</ion-label>
+      <ion-input formControlName="imagenes" type="url"></ion-input>
+    </ion-item>
+
+    <ion-button 
+    type="submit"
+    expand="block" 
+    shape="round"
+    [disabled]="!createProductForm.valid">
+      Crear producto
+    </ion-button>
+
+  </form>
+
 </ion-content>

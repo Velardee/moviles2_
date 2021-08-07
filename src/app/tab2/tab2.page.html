@@ -1,17 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/carrito']">
+        <ion-icon slot="end" name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngFor="let product of listaProductos | async ">
+        <ion-item >
+          <ion-label>
+            <h1>{{product.titulo}}</h1>
+            <p>{{product.descripcion}}</p>
+            <p>{{product.precio}}</p>
+            <p>{{product.descuento}}</p>
+            <img src="{{product.imagenes[0]}}" alt="">
+            <!-- <ion-button 
+            (click)="eliminarProducto(product.id, product.titulo)"
+            expand="block" shape="round" color="danger">
+              Eliminar
+            </ion-button> -->
+            <ion-buttons slot="end">
+              <ion-button color="primary" (click)="addCart()">
+                <ion-icon slot="start" name="cart" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button color="danger" (click)="eliminarProducto(product.id, product.titulo)">
+                <ion-icon slot="end" name="trash" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>

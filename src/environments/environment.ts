@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyCHmbuCctxgi1lJ0XTbZlcWL1sW3pYjMWs",
+    authDomain: "moviles2-905c8.firebaseapp.com",
+    projectId: "moviles2-905c8",
+    storageBucket: "moviles2-905c8.appspot.com",
+    messagingSenderId: "334313522842",
+    appId: "1:334313522842:web:081a3777a8b350be890123",
+    measurementId: "G-8V9N3B90HN"
+  },
+
+  stripeKey: "pk_test_51JDdGiEh6wq4G88bOd9JOH0haDgmH6nr8XBxly3FQrjYwtkJjUJ8EgFlQsONIY5G1RobrvlToTeSzt86XEmUE8PG00gh3safsM",
+  stripeUrlApi: "https://moviles2-api.herokuapp.com/"
 };
 
 /*

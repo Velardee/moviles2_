@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">one</string>
+    <string name="title_activity_main">one</string>
+    <string name="package_name">io.Velarde.moviles</string>
+    <string name="custom_url_scheme">io.Velarde.moviles</string>
+</resources>

@@ -1,0 +1,48 @@
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// .tarjeta {
+//     width: 350px;
+//     height: 275px;
+//     background-image: url('/assets/card_.png');
+//     background-size: cover;
+//     margin-top: -15%;
+//     position: relative;
+// }
+
+.tarjeta {
+    width: 350px;
+    height: 275px;
+    background-image: url('/assets/card_.png');
+    background-size: cover;
+    padding: 85px 0px 0px 0px;
+    margin-top: -17% !important;
+    position: relative;
+    margin: 0 auto;
+}
+
+.p-numero {
+    position: absolute;
+    margin-top: -20%;
+    padding: 0px 0px 0px 32%;
+}
+
+.p-codigo{
+    position: absolute;
+    margin-top: 20%;
+    padding: 0% 0% 0% 19%;
+}
+
+.p-nombre{
+    position: absolute;
+    margin-top: 45%;
+    padding: 0% 25% 0% 0%;
+}
+
+.p-expira{
+    margin-top: 20%;
+    padding: 0% 50% 0% 0%;
+}

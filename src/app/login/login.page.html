@@ -1,0 +1,68 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+    <ion-icon slot="start" name="barbell" color="redwork"></ion-icon>
+    <ion-label>Store</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #formulario="ngForm">
+    <div class="title">
+      <h1 class="ion-text-center">Iniciar sesión</h1>
+    </div>
+
+    <ion-list no-lines mode="ios">
+      <ion-item class="input"  no-lines>
+        <ion-label position="floating">
+          <ion-icon slot="start" name="mail-outline"></ion-icon>
+          Correo electronico
+        </ion-label>
+        <ion-input
+          type="email"
+          name="email"
+          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+          required="required"
+          [(ngModel)]="email"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="input" no-lines>
+        <ion-label position="floating">
+          <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+          Contraseña
+        </ion-label>
+        <ion-input
+          type="password"
+          name="password"
+          required="required"
+          [(ngModel)]="password"
+          minlength="5"
+        ></ion-input>
+      </ion-item>
+
+      <div class="olvide">
+        <ion-label>
+          <a routerLink="/recover">¿Olvidaste tu contraseña?</a>
+        </ion-label>
+      </div>
+
+      <div class="olvide">
+        <ion-label>
+          <a routerLink="/register">¿Aún no tienes cuenta?</a>
+        </ion-label>
+      </div>
+    </ion-list>
+
+    <ion-button 
+      expand="block" 
+      class="button" 
+      color="danger"
+      type="submit"
+      [disabled]="formulario.invalid"
+      
+      (click)="onSubmitLogin()"
+      >
+      Iniciar sesion
+    </ion-button>
+  </form>
+</ion-content>
