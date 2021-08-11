@@ -13,10 +13,14 @@ import { Observable } from 'rxjs';
 })
 export class CarritoService {
 
-  private orden: Orden;
+  orden: any;
   path = 'carrito/';
   uid = '';
-  user: User;
+  user: any = {
+    name: '',
+    uid: '',
+    email:  ''
+  };
 
   constructor(public firestore: FirestoreService,
               private firebaseAuth: AuthService,
@@ -34,8 +38,7 @@ export class CarritoService {
   }
 
   loadCart(){
-    const path = 'users/'  + this.uid + '/' + 'carrito';
-    console.log(this.user)
+    const path = 'users/'  + this.uid + '/' + 'carrito/';
     this.firestore.getDoc<Orden>(path, this.uid).subscribe( res => {
       console.log(res);
       if (res){
@@ -54,20 +57,20 @@ export class CarritoService {
       user: this.user,
       precioTotal: null,
       productos: [],
-      fecha: new Date
+      fecha: new Date()
     }
   }
 
   loadUser(){
     const path = 'users';
     this.firestore.getDoc<User>(path, this.uid).subscribe( res => {
-        this.user = res;
+         this.user = res;
         console.log(res)
         this.loadCart();
     });
   }
 
-  addCart(product: Products){
+  addCart(product: any){
     console.log('Add pedido -->', this.uid);
     if (this.uid.length){
       const item = this.orden.productos.find( productoPedido => {
@@ -86,10 +89,10 @@ export class CarritoService {
       // this.router.navigate(['/login']);
     }
     console.log('Add pedido -->', this.orden);
-    const path = 'users/' + this.uid + '/' + this.path;
-    this.firestore.createDoc(this.orden, path, this.uid).then( () => {
-      console.log('Añadido con exito')
-    })
+    // const path = 'users/' + this.uid + '/' + this.path;
+    // this.firestore.createDoc(this.orden, path, this.uid).then( () => {
+    //   console.log('Añadido con exito')
+    // })
   } 
 
 

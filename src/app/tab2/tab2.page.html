@@ -1,7 +1,8 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="secondary">
-      <ion-button [routerLink]="['/carrito']">
+      <ion-button (click)="openCart()">
+        {{ cartCount | async }}
         <ion-icon slot="end" name="cart"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -9,6 +10,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngFor="let item of products">
+        <ion-item>
+          <ion-label>
+            <h1>{{item.titulo}}</h1>
+            <span>{{item.descripcion | slice: 0:50 }}</span>
+            <p>{{item.precio |currency: 'MXN'}}</p>
+            <img src="{{item.imagen}}" alt="">
+            <ion-buttons slot="start">
+              <ion-button color="primary" (click)="addCart(item)">
+                Agregar
+              </ion-button>
+            </ion-buttons>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-grid>
     <ion-row>
@@ -26,7 +47,7 @@
               Eliminar
             </ion-button> -->
             <ion-buttons slot="end">
-              <ion-button color="primary" (click)="addCart()">
+              <ion-button color="primary">
                 <ion-icon slot="start" name="cart" slot="icon-only"></ion-icon>
               </ion-button>
               <ion-button color="danger" (click)="eliminarProducto(product.id, product.titulo)">

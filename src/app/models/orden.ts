@@ -13,3 +13,7 @@ export interface ProductoPedido {
     producto: Products;
     cantidad: number;
 }
+
+export interface Total {
+    cantidad: number;
+}

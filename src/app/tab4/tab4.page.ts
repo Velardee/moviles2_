@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit,  } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 
 import { Stripe } from '@ionic-native/stripe/ngx';
 import { environment } from '../../environments/environment';
 import { ComprasService } from "../services/compras.service";
+import { Router, ActivatedRoute } from '@angular/router';
+import { CarritoPage } from '../carrito/carrito.page';
 
 @Component({
   selector: 'app-tab4',
@@ -12,24 +14,31 @@ import { ComprasService } from "../services/compras.service";
 })
 export class Tab4Page implements OnInit {
 
-  public cardNumber: string= "4242424242424242";
-  public mes: string= "11";
-  public anio: string= "2021";
-  public codigo: string= "221";
-  public nombre: string= "Hugo Velarde";
+  public cardNumber: string= "";
+  public mes: string= "";
+  public anio: string= "";
+  public codigo: string= "";
+  public nombre: string= "";
   deshabilitarBoton: boolean = false;
   public loading;
+
+  total: any;
+
 
   credencialesTarjeta: any = {};
 
   constructor( public alertController: AlertController,
                 private stripe: Stripe,
                 public loader: LoadingController,
-                public servicio: ComprasService) { }
+                public servicio: ComprasService,
+                private router: Router,
+                private activedRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    
+    this.total = this.activedRouter.snapshot.paramMap.get('id');
+    console.log(this.total);
   }
+
 
   separarNumero(){
     let nuevoNumero = this.cardNumber.toString().replace(/\d{4}(?=.)/g,'$& ');
@@ -63,11 +72,11 @@ export class Tab4Page implements OnInit {
     this.stripe.createCardToken(this.credencialesTarjeta)
     .then(token => {
       
-      let cantidad = 100 * 100;
+      let cantidad = this.total * 100;
       console.log(JSON.stringify(token));
       this.presentarAlert("Ok", `Token: ${token.id}`);
 
-      this.servicio.completarPago(cantidad, "MXN", token.id, "Mi Primer pago con stripe");
+      this.servicio.completarPago(cantidad, "MXN", token.id, "Pago exitoso");
     })
     .catch(error => {
       console.log(JSON.stringify(error));
@@ -95,6 +104,10 @@ export class Tab4Page implements OnInit {
 
   onClick(){
     alert("Hola word");
+  }
+
+  returnCarrito(){
+    this.router.navigateByUrl('')
   }
 
 }
